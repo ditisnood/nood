@@ -21,6 +21,31 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* BACKGROUND IMAGE (sfeer, niet dominant) */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: 
+        linear-gradient(
+          rgba(0,0,0,0.75),
+          rgba(0,0,0,0.75)
+        ),
+        url("bg.png");
+      background-size: cover;
+      background-position: center;
+      filter: contrast(1.2) brightness(0.6);
+      z-index: 0;
+    }
+
+    /* ALLE CONTENT BOVEN DE BG */
+    body > * {
+      position: relative;
+      z-index: 1;
     }
 
     h1 {
@@ -30,8 +55,22 @@
       letter-spacing: -0.05em;
     }
 
-    .links {
+    .primary {
       margin-top: 24px;
+      font-size: 16px;
+      color: #fff;
+      text-decoration: none;
+      border-bottom: 1px solid #fff;
+      padding-bottom: 2px;
+      opacity: 0.9;
+    }
+
+    .primary:hover {
+      opacity: 1;
+    }
+
+    .links {
+      margin-top: 20px;
       display: flex;
       gap: 20px;
       font-size: 14px;
@@ -40,11 +79,18 @@
     a {
       color: #fff;
       text-decoration: none;
-      opacity: 0.7;
+      opacity: 0.6;
     }
 
     a:hover {
       opacity: 1;
+    }
+
+    /* KLEINE FOTO (anker, scherp) */
+    .photo {
+      margin-top: 40px;
+      max-width: 240px;
+      opacity: 0.85;
     }
   </style>
 </head>
@@ -52,10 +98,20 @@
 <body>
   <h1>NOOD.</h1>
 
+  <!-- PRIMARY LINK -->
+  <a class="primary" href="https://distrokid.com/hyperfollow/nood2/kom-verder" target="_blank">
+    Presave Kom Verder
+  </a>
+
+  <!-- SOCIAL LINKS -->
   <div class="links">
-    <a href="https://open.spotify.com/" target="_blank">Spotify</a>
-    <a href="https://music.apple.com/" target="_blank">Apple Music</a>
-    <a href="https://instagram.com/dylankoelkast" target="_blank">Instagram</a>
+    <a href="https://open.spotify.com/artist/XXXX" target="_blank">Spotify</a>
+    <a href="https://www.tiktok.com/@dylankoelkast" target="_blank">TikTok</a>
+    <a href="https://www.youtube.com/@noodzakelijk" target="_blank">YouTube</a>
+    <a href="https://soundcloud.com/noodzakelijk" target="_blank">SoundCloud</a>
   </div>
+
+  <!-- KLEINE FOTO -->
+  <img class="photo" src="foto.jpg" alt="NOOD">
 </body>
 </html>
