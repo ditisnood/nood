@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -168,11 +167,81 @@
       opacity: 0.95;
     }
 
-    .status{
-      margin-top: 8px;
-      font-size: 12px;
-      color: var(--muted2);
-      min-height: 16px;
+    /* EP dropdown */
+    .ep-tracks{
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+      padding-left: 10px;
+    }
+
+    .ep-open .ep-tracks{
+      display: flex;
+    }
+
+    .track-row{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: rgba(0,0,0,0.42);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.35);
+    }
+
+    .track-row:hover{
+      background: rgba(0,0,0,0.55);
+      border-color: rgba(255,255,255,0.20);
+      transform: translateY(-1px);
+      transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+    }
+
+    .track-title{
+      display: inline-block;
+      text-decoration: none;
+      color: #fff;
+      opacity: 0.95;
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .track-title:hover{ opacity: 1; }
+
+    .dropdown{
+      flex: 0 0 auto;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
+    }
+
+    .link-btn:hover .dropdown{
+      background: rgba(255,255,255,0.09);
+      border-color: rgba(255,255,255,0.30);
+    }
+
+    .dropdown svg{
+      width: 18px;
+      height: 18px;
+      display: block;
+      opacity: 0.95;
+      transition: transform 140ms ease;
+    }
+
+    .ep-open .dropdown svg{
+      transform: rotate(180deg);
     }
 
     .links{
@@ -195,7 +264,8 @@
 
     /* Optional: reduce motion */
     @media (prefers-reduced-motion: reduce){
-      .link-btn, .play{ transition: none; }
+      .link-btn, .play, .dropdown, .dropdown svg{ transition: none; }
+      .track-row{ transition: none !important; }
     }
   </style>
 </head>
@@ -205,6 +275,7 @@
     <h1>NOOD.</h1>
 
     <div class="buttons">
+
       <!-- Kom Verder -->
       <a
         class="link-btn"
@@ -226,9 +297,7 @@
           <span class="btn-title">Luister Kom Verder</span>
         </span>
 
-        <!-- preview button -->
         <button class="play" type="button" aria-label="Preview Kom Verder" title="Preview">
-          <!-- play icon -->
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M8 5.5v13l11-6.5L8 5.5z" fill="currentColor"/>
           </svg>
@@ -256,14 +325,125 @@
           <span class="btn-title">Luister Dans Met Me</span>
         </span>
 
-        <!-- preview button -->
         <button class="play" type="button" aria-label="Preview Dans Met Me" title="Preview">
-          <!-- play icon -->
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M8 5.5v13l11-6.5L8 5.5z" fill="currentColor"/>
           </svg>
         </button>
       </a>
+
+      <!-- EP: Leugens Vol Genegenheid (now under singles) -->
+      <div id="ep-lvg">
+        <div class="link-btn" role="group" aria-label="Leugens Vol Genegenheid EP">
+          <span class="cover" aria-hidden="true">
+            <img
+              src="https://s3.amazonaws.com/gather.fandalism.com/800x800%2D1215624%2D%2DB673FD7C%2D0362%2D4898%2DA531FCCA94B54233%2D%2D0%2D%2D5575705%2D%2DLeugensVolGenegenheidCOVER.jpg"
+              alt="Leugens Vol Genegenheid cover"
+              loading="lazy"
+            />
+          </span>
+
+          <span class="btn-text">
+            <a
+              class="btn-title"
+              href="https://open.spotify.com/album/35Cjc3Gp0r6UcUpuxLNMvp?si=jxAP9d9LQJixh-BU4zVGJA"
+              target="_blank"
+              rel="noopener"
+              style="color:#fff; text-decoration:none;"
+            >
+              Leugens Vol Genegenheid (EP)
+            </a>
+          </span>
+
+          <button class="dropdown" type="button" aria-label="Toon tracks" aria-expanded="false" title="Tracks">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6.5 9.5l5.5 5.5 5.5-5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="ep-tracks" aria-label="Tracks van de EP">
+          <div class="track-row" data-audio="FINALLeugensVolGenegenheid_trimmed.mp3">
+            <span class="cover" aria-hidden="true">
+              <img
+                src="https://s3.amazonaws.com/gather.fandalism.com/800x800%2D1215624%2D%2DB673FD7C%2D0362%2D4898%2DA531FCCA94B54233%2D%2D0%2D%2D5575705%2D%2DLeugensVolGenegenheidCOVER.jpg"
+                alt="Leugens Vol Genegenheid cover"
+                loading="lazy"
+              />
+            </span>
+            <span class="btn-text">
+              <a class="track-title" href="https://open.spotify.com/track/1ZjWYoWFA5p1bIUv4KZu3Q?si=e1672488223e443f" target="_blank" rel="noopener">
+                Leugens Vol Genegenheid
+              </a>
+            </span>
+            <button class="play" type="button" aria-label="Preview Leugens Vol Genegenheid" title="Preview">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M8 5.5v13l11-6.5L8 5.5z" fill="currentColor"/>
+              </svg>
+            </button>
+          </div>
+
+          <div class="track-row" data-audio="FINAL2YoghurtmetAardbei_trimmed.mp3">
+            <span class="cover" aria-hidden="true">
+              <img
+                src="https://s3.amazonaws.com/gather.fandalism.com/800x800%2D1215624%2D%2DB673FD7C%2D0362%2D4898%2DA531FCCA94B54233%2D%2D0%2D%2D5575705%2D%2DLeugensVolGenegenheidCOVER.jpg"
+                alt="Leugens Vol Genegenheid cover"
+                loading="lazy"
+              />
+            </span>
+            <span class="btn-text">
+              <a class="track-title" href="https://open.spotify.com/track/4prWdDP12x6SsSJrdCcsQI?si=cad241731ffa4f57" target="_blank" rel="noopener">
+                Yoghurt met Aardbei
+              </a>
+            </span>
+            <button class="play" type="button" aria-label="Preview Yoghurt met Aardbei" title="Preview">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M8 5.5v13l11-6.5L8 5.5z" fill="currentColor"/>
+              </svg>
+            </button>
+          </div>
+
+          <div class="track-row" data-audio="FINALZeeVanTwijfelsenVerlangen_trimmed.mp3">
+            <span class="cover" aria-hidden="true">
+              <img
+                src="https://s3.amazonaws.com/gather.fandalism.com/800x800%2D1215624%2D%2DB673FD7C%2D0362%2D4898%2DA531FCCA94B54233%2D%2D0%2D%2D5575705%2D%2DLeugensVolGenegenheidCOVER.jpg"
+                alt="Leugens Vol Genegenheid cover"
+                loading="lazy"
+              />
+            </span>
+            <span class="btn-text">
+              <a class="track-title" href="https://open.spotify.com/track/7nSJzLuDNdj1fk08Q7bm4d?si=eeb768636ccc443a" target="_blank" rel="noopener">
+                Zee Van Twijfels en Verlangen
+              </a>
+            </span>
+            <button class="play" type="button" aria-label="Preview Zee Van Twijfels en Verlangen" title="Preview">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M8 5.5v13l11-6.5L8 5.5z" fill="currentColor"/>
+              </svg>
+            </button>
+          </div>
+
+          <div class="track-row" data-audio="FINALZeilbootvanGlas_trimmed.mp3">
+            <span class="cover" aria-hidden="true">
+              <img
+                src="https://s3.amazonaws.com/gather.fandalism.com/800x800%2D1215624%2D%2DB673FD7C%2D0362%2D4898%2DA531FCCA94B54233%2D%2D0%2D%2D5575705%2D%2DLeugensVolGenegenheidCOVER.jpg"
+                alt="Leugens Vol Genegenheid cover"
+                loading="lazy"
+              />
+            </span>
+            <span class="btn-text">
+              <a class="track-title" href="https://open.spotify.com/track/2lGxNFEYI4hqOYEnebVBn3?si=e885286b23554cab" target="_blank" rel="noopener">
+                Zeilboot van Glas
+              </a>
+            </span>
+            <button class="play" type="button" aria-label="Preview Zeilboot van Glas" title="Preview">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M8 5.5v13l11-6.5L8 5.5z" fill="currentColor"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
 
     </div>
 
@@ -276,110 +456,166 @@
     </div>
   </main>
 
-<script>
-  (function () {
-    const cards = Array.from(document.querySelectorAll(".link-btn"));
+  <script>
+    (function () {
+      const cards = Array.from(document.querySelectorAll(".link-btn"));
 
-    // One shared audio instance so only one preview can play at once
-    const audio = new Audio();
-    audio.preload = "none";
+      // One shared audio instance so only one preview can play at once
+      const audio = new Audio();
+      audio.preload = "none";
 
-    let activeCard = null;
+      let activeEl = null; // active .link-btn OR active .track-row
 
-    function setPlayIcon(btn) {
-      btn.innerHTML = `
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M8 5.5v13l11-6.5L8 5.5z" fill="currentColor"/>
-        </svg>
-      `;
-    }
+      function setPlayIcon(btn) {
+        btn.innerHTML = `
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M8 5.5v13l11-6.5L8 5.5z" fill="currentColor"/>
+          </svg>
+        `;
+      }
 
-    function setPauseIcon(btn) {
-      btn.innerHTML = `
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M7 6.5h3v11H7v-11zm7 0h3v11h-3v-11z" fill="currentColor"/>
-        </svg>
-      `;
-    }
+      function setPauseIcon(btn) {
+        btn.innerHTML = `
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 6.5h3v11H7v-11zm7 0h3v11h-3v-11z" fill="currentColor"/>
+          </svg>
+        `;
+      }
 
-    function resetAllButtons() {
-      cards.forEach((card) => {
-        const btn = card.querySelector(".play");
-        if (btn) setPlayIcon(btn);
-      });
-    }
+      function resetAllPlayButtons() {
+        document.querySelectorAll(".play").forEach((btn) => setPlayIcon(btn));
+      }
 
-    function stopPreview() {
-      audio.pause();
-      audio.currentTime = 0;
-      activeCard = null;
-      resetAllButtons();
-    }
-
-    audio.addEventListener("ended", () => {
-      stopPreview();
-    });
-
-    audio.addEventListener("error", () => {
-      resetAllButtons();
-      activeCard = null;
-    });
-
-    cards.forEach((card) => {
-      const playBtn = card.querySelector(".play");
-      const src = card.getAttribute("data-audio");
-
-      if (!playBtn) return;
-
-      // Preview only when clicking the play button (not the whole card)
-      playBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (!src) return;
-
-        const isSame = activeCard === card;
-        const isPlaying = !audio.paused && isSame;
-
-        if (isPlaying) {
-          stopPreview();
-          return;
-        }
-
-        // Switching tracks or starting fresh
-        resetAllButtons();
-        activeCard = card;
-        audio.src = src;
+      function stopPreview() {
+        audio.pause();
         audio.currentTime = 0;
+        activeEl = null;
+        resetAllPlayButtons();
+      }
 
-        audio.play()
-          .then(() => {
-            setPauseIcon(playBtn);
-          })
-          .catch(() => {
-            setPlayIcon(playBtn);
-            activeCard = null;
-          });
+      audio.addEventListener("ended", stopPreview);
+
+      audio.addEventListener("error", () => {
+        resetAllPlayButtons();
+        activeEl = null;
       });
 
-      // If user clicks the cover image, also preview
-      const cover = card.querySelector(".cover");
-      if (cover) {
-        cover.addEventListener("click", (e) => {
+      // Singles preview (keeps working)
+      cards.forEach((card) => {
+        const playBtn = card.querySelector(".play");
+        const src = card.getAttribute("data-audio");
+
+        if (!playBtn) return;
+
+        playBtn.addEventListener("click", (e) => {
           e.preventDefault();
           e.stopPropagation();
-          playBtn.click();
+
+          // IMPORTANT: If this is the EP header row, it has no data-audio; ignore
+          if (!src) return;
+
+          const isSame = activeEl === card;
+          const isPlaying = !audio.paused && isSame;
+
+          if (isPlaying) {
+            stopPreview();
+            return;
+          }
+
+          resetAllPlayButtons();
+          activeEl = card;
+          audio.src = src;
+          audio.currentTime = 0;
+
+          audio.play()
+            .then(() => setPauseIcon(playBtn))
+            .catch(() => {
+              setPlayIcon(playBtn);
+              activeEl = null;
+            });
+        });
+
+        const cover = card.querySelector(".cover");
+        if (cover && src) {
+          cover.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            playBtn.click();
+          });
+        }
+      });
+
+      // EP dropdown toggle
+      const epRoot = document.getElementById("ep-lvg");
+      if (epRoot) {
+        const toggleBtn = epRoot.querySelector(".dropdown");
+
+        if (toggleBtn) {
+          toggleBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const isOpen = epRoot.classList.toggle("ep-open");
+            toggleBtn.setAttribute("aria-expanded", String(isOpen));
+          });
+        }
+
+        // Track previews inside EP
+        epRoot.querySelectorAll(".track-row").forEach((row) => {
+          const playBtn = row.querySelector(".play");
+          const src = row.getAttribute("data-audio");
+
+          if (!playBtn) return;
+
+          playBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            if (!src) return;
+
+            const isSame = activeEl === row;
+            const isPlaying = !audio.paused && isSame;
+
+            if (isPlaying) {
+              stopPreview();
+              return;
+            }
+
+            resetAllPlayButtons();
+            activeEl = row;
+            audio.src = src;
+            audio.currentTime = 0;
+
+            audio.play()
+              .then(() => setPauseIcon(playBtn))
+              .catch(() => {
+                setPlayIcon(playBtn);
+                activeEl = null;
+              });
+          });
+
+          const cover = row.querySelector(".cover");
+          if (cover) {
+            cover.addEventListener("click", (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              playBtn.click();
+            });
+          }
         });
       }
-    });
 
-    // Stop preview when user clicks outside the buttons area
-    document.addEventListener("click", (e) => {
-      const clickedInside = e.target.closest(".link-btn");
-      if (!clickedInside && activeCard) stopPreview();
-    });
-  })();
-</script>
+      // Stop preview when user clicks outside previews
+      document.addEventListener("click", (e) => {
+        const clickedPlay = e.target.closest(".play");
+        const clickedInsideEp = e.target.closest("#ep-lvg");
+        const clickedInsideCard = e.target.closest(".link-btn");
+        const clickedInsideTrack = e.target.closest(".track-row");
+
+        if (!clickedPlay && activeEl) stopPreview();
+        if (!clickedInsideEp && !clickedInsideCard && !clickedInsideTrack && activeEl) stopPreview();
+      });
+    })();
+  </script>
 </body>
 </html>
-```
