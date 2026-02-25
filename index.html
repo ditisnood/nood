@@ -276,115 +276,110 @@
     </div>
   </main>
 
-  <script>
-    (function () {
-      const cards = Array.from(document.querySelectorAll(".link-btn"));
+<script>
+  (function () {
+    const cards = Array.from(document.querySelectorAll(".link-btn"));
 
-      // One shared audio instance so only one preview can play at once
-      const audio = new Audio();
-      audio.preload = "none";
+    // One shared audio instance so only one preview can play at once
+    const audio = new Audio();
+    audio.preload = "none";
 
-      let activeCard = null;
-      }
+    let activeCard = null;
 
-      function setPlayIcon(btn) {
-        btn.innerHTML = `
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M8 5.5v13l11-6.5L8 5.5z" fill="currentColor"/>
-          </svg>
-        `;
-      }
+    function setPlayIcon(btn) {
+      btn.innerHTML = `
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M8 5.5v13l11-6.5L8 5.5z" fill="currentColor"/>
+        </svg>
+      `;
+    }
 
-      function setPauseIcon(btn) {
-        btn.innerHTML = `
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M7 6.5h3v11H7v-11zm7 0h3v11h-3v-11z" fill="currentColor"/>
-          </svg>
-        `;
-      }
+    function setPauseIcon(btn) {
+      btn.innerHTML = `
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M7 6.5h3v11H7v-11zm7 0h3v11h-3v-11z" fill="currentColor"/>
+        </svg>
+      `;
+    }
 
-      function resetAllButtons() {
-        cards.forEach(card => {
-          const btn = card.querySelector(".play");
-          if (btn) setPlayIcon(btn);
-        });
-      }
+    function resetAllButtons() {
+      cards.forEach((card) => {
+        const btn = card.querySelector(".play");
+        if (btn) setPlayIcon(btn);
+      });
+    }
 
-      function stopPreview() {
-        audio.pause();
+    function stopPreview() {
+      audio.pause();
+      audio.currentTime = 0;
+      activeCard = null;
+      resetAllButtons();
+    }
+
+    audio.addEventListener("ended", () => {
+      stopPreview();
+    });
+
+    audio.addEventListener("error", () => {
+      resetAllButtons();
+      activeCard = null;
+    });
+
+    cards.forEach((card) => {
+      const playBtn = card.querySelector(".play");
+      const src = card.getAttribute("data-audio");
+
+      if (!playBtn) return;
+
+      // Preview only when clicking the play button (not the whole card)
+      playBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (!src) return;
+
+        const isSame = activeCard === card;
+        const isPlaying = !audio.paused && isSame;
+
+        if (isPlaying) {
+          stopPreview();
+          return;
+        }
+
+        // Switching tracks or starting fresh
+        resetAllButtons();
+        activeCard = card;
+        audio.src = src;
         audio.currentTime = 0;
-        activeCard = null;
-        resetAllButtons();
-        setStatus("");
-      }
 
-      audio.addEventListener("ended", () => {
-        stopPreview();
+        audio.play()
+          .then(() => {
+            setPauseIcon(playBtn);
+          })
+          .catch(() => {
+            setPlayIcon(playBtn);
+            activeCard = null;
+          });
       });
 
-      audio.addEventListener("error", () => {
-        resetAllButtons();
-        setStatus("Preview kan niet laden. Check of het audiobestand naast je HTML staat en de bestandsnaam klopt.");
-        activeCard = null;
-      });
-
-      cards.forEach(card => {
-        const playBtn = card.querySelector(".play");
-        const title = card.getAttribute("data-title") || "Track";
-        const src = card.getAttribute("data-audio");
-
-        // Preview only when clicking the play button (not the whole card)
-        playBtn.addEventListener("click", (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-
-          if (!src) {
-            setStatus("Geen audio pad gevonden voor preview.");
-            return;
-          }
-
-          const isSame = activeCard === card;
-          const isPlaying = !audio.paused && isSame;
-
-          if (isPlaying) {
-            stopPreview();
-            return;
-          }
-
-          // Switching tracks or starting fresh
-          resetAllButtons();
-          activeCard = card;
-          audio.src = src;
-          audio.currentTime = 0;
-
-          audio.play()
-            .then(() => {
-              setPauseIcon(playBtn);
-              setStatus(`Preview: ${title}`);
-            })
-            .catch(() => {
-              setPlayIcon(playBtn);
-              setStatus("Autoplay geblokkeerd. Klik nog een keer op preview.");
-              activeCard = null;
-            });
-        });
-
-        // If user clicks the cover image, also preview (optional)
-        const cover = card.querySelector(".cover");
+      // If user clicks the cover image, also preview
+      const cover = card.querySelector(".cover");
+      if (cover) {
         cover.addEventListener("click", (e) => {
           e.preventDefault();
           e.stopPropagation();
           playBtn.click();
         });
-      });
+      }
+    });
 
-      // Stop preview when user clicks outside the buttons area
-      document.addEventListener("click", (e) => {
-        const clickedInside = e.target.closest(".link-btn");
-        if (!clickedInside && activeCard) stopPreview();
-      });
-    })();
-  </script>
+    // Stop preview when user clicks outside the buttons area
+    document.addEventListener("click", (e) => {
+      const clickedInside = e.target.closest(".link-btn");
+      if (!clickedInside && activeCard) stopPreview();
+    });
+  })();
+</script>
 </body>
 </html>
 ```
