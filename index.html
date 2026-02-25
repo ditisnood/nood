@@ -267,7 +267,6 @@
         </button>
       </a>
 
-      <div class="status" id="status"></div>
     </div>
 
     <div class="links">
@@ -281,7 +280,6 @@
 
   <script>
     (function () {
-      const statusEl = document.getElementById("status");
       const cards = Array.from(document.querySelectorAll(".link-btn"));
 
       // One shared audio instance so only one preview can play at once
@@ -289,9 +287,6 @@
       audio.preload = "none";
 
       let activeCard = null;
-
-      function setStatus(text) {
-        statusEl.textContent = text || "";
       }
 
       function setPlayIcon(btn) {
