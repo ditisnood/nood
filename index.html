@@ -254,10 +254,6 @@
       filter: invert(1);
     }
 
-    @media (prefers-reduced-motion: reduce){
-      .link-btn, .play, .redirect, .dropdown, .dropdown svg, .social a{ transition: none; }
-      .track-row{ transition: none !important; }
-    }
   </style>
 </head>
 
@@ -267,31 +263,31 @@
 
     <div class="buttons">
 
-      <!-- Carrière Maken presave -->
+      <!-- Carriere Maken -->
       <a
         class="link-btn"
-        href="https://distrokid.com/hyperfollow/nood2/carriere-maken"
+        href="https://open.spotify.com/track/2jDvx9wURXgVLMWEOftTcD?si=daf1ccbba4614050"
         target="_blank"
         rel="noopener"
+        data-audio="Nood - Carriere Maken.wav"
+        data-title="Carriere Maken"
       >
-        <span class="cover" aria-hidden="true">
+        <span class="cover">
           <img
             src="https://s3.amazonaws.com/gather.fandalism.com/800x800%2D1215624%2D%2D2F9BE2C7%2D8C96%2D4B10%2DB8013F3458B74F2F%2D%2D0%2D%2D13088280%2D%2DCarriereMaken.jpg"
-            alt="Carrière Maken cover"
-            loading="lazy"
+            alt="Carriere Maken cover"
           />
         </span>
 
         <span class="btn-text">
-          <span class="btn-title">Presave Carriere Maken</span>
+          <span class="btn-title">Luister Carriere Maken</span>
         </span>
 
-        <span class="redirect" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M8 16L16 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M9 8h7v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <button class="play" type="button">
+          <svg viewBox="0 0 24 24">
+            <path d="M8 5.5v13l11-6.5L8 5.5z" fill="currentColor"/>
           </svg>
-        </span>
+        </button>
       </a>
 
       <!-- Dans Met Me -->
@@ -303,20 +299,16 @@
         data-audio="DansMetMeFINAL.mp3"
         data-title="Dans Met Me"
       >
-        <span class="cover" aria-hidden="true">
-          <img
-            src="https://s3.amazonaws.com/gather.fandalism.com/800x800%2D1215624%2D%2D26323659%2DD20A%2D4759%2DBA572A27F7F330B1%2D%2D0%2D%2D7737359%2D%2DDansMetMe.jpg"
-            alt="Dans Met Me cover"
-            loading="lazy"
-          />
+        <span class="cover">
+          <img src="https://s3.amazonaws.com/gather.fandalism.com/800x800%2D1215624%2D%2D26323659%2DD20A%2D4759%2DBA572A27F7F330B1%2D%2D0%2D%2D7737359%2D%2DDansMetMe.jpg"/>
         </span>
 
         <span class="btn-text">
           <span class="btn-title">Luister Dans Met Me</span>
         </span>
 
-        <button class="play" type="button" aria-label="Preview Dans Met Me" title="Preview">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <button class="play" type="button">
+          <svg viewBox="0 0 24 24">
             <path d="M8 5.5v13l11-6.5L8 5.5z" fill="currentColor"/>
           </svg>
         </button>
@@ -331,312 +323,101 @@
         data-audio="NoodwnrikffdraaibenjewegFINAL.mp3"
         data-title="Kom Verder"
       >
-        <span class="cover" aria-hidden="true">
-          <img
-            src="https://s3.amazonaws.com/gather.fandalism.com/800x800%2D1215624%2D%2DE8D46418%2D3ADD%2D4BAB%2DBC7482F1402DA03B%2D%2D0%2D%2D14096792%2D%2DKomVerderfinalcovernotext.jpg"
-            alt="Kom Verder cover"
-            loading="lazy"
-          />
+        <span class="cover">
+          <img src="https://s3.amazonaws.com/gather.fandalism.com/800x800%2D1215624%2D%2DE8D46418%2D3ADD%2D4BAB%2DBC7482F1402DA03B%2D%2D0%2D%2D14096792%2D%2DKomVerderfinalcovernotext.jpg"/>
         </span>
 
         <span class="btn-text">
           <span class="btn-title">Luister Kom Verder</span>
         </span>
 
-        <button class="play" type="button" aria-label="Preview Kom Verder" title="Preview">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <button class="play" type="button">
+          <svg viewBox="0 0 24 24">
             <path d="M8 5.5v13l11-6.5L8 5.5z" fill="currentColor"/>
           </svg>
         </button>
       </a>
 
-      <!-- EP: Leugens Vol Genegenheid -->
-      <div id="ep-lvg">
-        <div class="link-btn" role="group" aria-label="Leugens Vol Genegenheid EP">
-          <span class="cover" aria-hidden="true">
-            <img
-              src="https://s3.amazonaws.com/gather.fandalism.com/800x800%2D1215624%2D%2DB673FD7C%2D0362%2D4898%2DA531FCCA94B54233%2D%2D0%2D%2D5575705%2D%2DLeugensVolGenegenheidCOVER.jpg"
-              alt="Leugens Vol Genegenheid cover"
-              loading="lazy"
-            />
-          </span>
-
-          <span class="btn-text">
-            <a
-              class="btn-title"
-              href="https://open.spotify.com/album/35Cjc3Gp0r6UcUpuxLNMvp?si=jxAP9d9LQJixh-BU4zVGJA"
-              target="_blank"
-              rel="noopener"
-              style="color:#fff; text-decoration:none;"
-            >
-              Leugens Vol Genegenheid (EP)
-            </a>
-            <div class="btn-sub">met SpaceGambler</div>
-          </span>
-
-          <button class="dropdown" type="button" aria-label="Toon tracks" aria-expanded="false" title="Tracks">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M6.5 9.5l5.5 5.5 5.5-5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
-
-        <div class="ep-tracks" aria-label="Tracks van de EP">
-          <div class="track-row" data-audio="FINALLeugensVolGenegenheid_trimmed.mp3">
-            <span class="cover" aria-hidden="true">
-              <img
-                src="https://s3.amazonaws.com/gather.fandalism.com/800x800%2D1215624%2D%2DB673FD7C%2D0362%2D4898%2DA531FCCA94B54233%2D%2D0%2D%2D5575705%2D%2DLeugensVolGenegenheidCOVER.jpg"
-                alt="Leugens Vol Genegenheid cover"
-                loading="lazy"
-              />
-            </span>
-            <span class="btn-text">
-              <a class="track-title" href="https://open.spotify.com/track/1ZjWYoWFA5p1bIUv4KZu3Q?si=e1672488223e443f" target="_blank" rel="noopener">
-                Leugens Vol Genegenheid
-              </a>
-            </span>
-            <button class="play" type="button" aria-label="Preview Leugens Vol Genegenheid" title="Preview">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M8 5.5v13l11-6.5L8 5.5z" fill="currentColor"/>
-              </svg>
-            </button>
-          </div>
-
-          <div class="track-row" data-audio="FINAL2YoghurtmetAardbei_trimmed.mp3">
-            <span class="cover" aria-hidden="true">
-              <img
-                src="https://s3.amazonaws.com/gather.fandalism.com/800x800%2D1215624%2D%2DB673FD7C%2D0362%2D4898%2DA531FCCA94B54233%2D%2D0%2D%2D5575705%2D%2DLeugensVolGenegenheidCOVER.jpg"
-                alt="Leugens Vol Genegenheid cover"
-                loading="lazy"
-              />
-            </span>
-            <span class="btn-text">
-              <a class="track-title" href="https://open.spotify.com/track/4prWdDP12x6SsSJrdCcsQI?si=cad241731ffa4f57" target="_blank" rel="noopener">
-                Yoghurt met Aardbei
-              </a>
-            </span>
-            <button class="play" type="button" aria-label="Preview Yoghurt met Aardbei" title="Preview">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M8 5.5v13l11-6.5L8 5.5z" fill="currentColor"/>
-              </svg>
-            </button>
-          </div>
-
-          <div class="track-row" data-audio="FINALZeeVanTwijfelsenVerlangen_trimmed.mp3">
-            <span class="cover" aria-hidden="true">
-              <img
-                src="https://s3.amazonaws.com/gather.fandalism.com/800x800%2D1215624%2D%2DB673FD7C%2D0362%2D4898%2DA531FCCA94B54233%2D%2D0%2D%2D5575705%2D%2DLeugensVolGenegenheidCOVER.jpg"
-                alt="Leugens Vol Genegenheid cover"
-                loading="lazy"
-              />
-            </span>
-            <span class="btn-text">
-              <a class="track-title" href="https://open.spotify.com/track/7nSJzLuDNdj1fk08Q7bm4d?si=eeb768636ccc443a" target="_blank" rel="noopener">
-                Zee Van Twijfels en Verlangen
-              </a>
-            </span>
-            <button class="play" type="button" aria-label="Preview Zee Van Twijfels en Verlangen" title="Preview">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M8 5.5v13l11-6.5L8 5.5z" fill="currentColor"/>
-              </svg>
-            </button>
-          </div>
-
-          <div class="track-row" data-audio="FINALZeilbootvanGlas_trimmed.mp3">
-            <span class="cover" aria-hidden="true">
-              <img
-                src="https://s3.amazonaws.com/gather.fandalism.com/800x800%2D1215624%2D%2DB673FD7C%2D0362%2D4898%2DA531FCCA94B54233%2D%2D0%2D%2D5575705%2D%2DLeugensVolGenegenheidCOVER.jpg"
-                alt="Leugens Vol Genegenheid cover"
-                loading="lazy"
-              />
-            </span>
-            <span class="btn-text">
-              <a class="track-title" href="https://open.spotify.com/track/2lGxNFEYI4hqOYEnebVBn3?si=e885286b23554cab" target="_blank" rel="noopener">
-                Zeilboot van Glas
-              </a>
-            </span>
-            <button class="play" type="button" aria-label="Preview Zeilboot van Glas" title="Preview">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M8 5.5v13l11-6.5L8 5.5z" fill="currentColor"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
     </div>
 
-    <div class="social" aria-label="Social links">
-      <a href="https://open.spotify.com/artist/7EHcdzlNlWqJKebwifLjZg?si=WSA-HqejSeCdrnXwaQ425g" target="_blank" rel="noopener" aria-label="Spotify">
-        <img src="spotify.svg" alt="Spotify" loading="lazy" />
-      </a>
-
-      <a href="https://www.instagram.com/ditisnood/" target="_blank" rel="noopener" aria-label="Instagram">
-        <img src="instagram.svg" alt="Instagram" loading="lazy" />
-      </a>
-
-      <a href="https://www.tiktok.com/@ditisnood" target="_blank" rel="noopener" aria-label="TikTok">
-        <img src="tiktok.svg" alt="TikTok" loading="lazy" />
-      </a>
-
-      <a href="https://www.youtube.com/@noodzakelijk" target="_blank" rel="noopener" aria-label="YouTube">
-        <img src="youtube.svg" alt="YouTube" loading="lazy" />
-      </a>
-
-      <a href="https://soundcloud.com/noodzakelijk" target="_blank" rel="noopener" aria-label="SoundCloud">
-        <img src="soundcloud-brands-solid-full.svg" alt="SoundCloud" loading="lazy" />
-      </a>
+    <div class="social">
+      <a href="https://open.spotify.com/artist/7EHcdzlNlWqJKebwifLjZg?si=WSA-HqejSeCdrnXwaQ425g"><img src="spotify.svg"></a>
+      <a href="https://www.instagram.com/ditisnood/"><img src="instagram.svg"></a>
+      <a href="https://www.tiktok.com/@ditisnood"><img src="tiktok.svg"></a>
+      <a href="https://www.youtube.com/@noodzakelijk"><img src="youtube.svg"></a>
+      <a href="https://soundcloud.com/noodzakelijk"><img src="soundcloud-brands-solid-full.svg"></a>
     </div>
   </main>
 
-  <script>
-    (function () {
-      const cards = Array.from(document.querySelectorAll(".link-btn"));
-      const audio = new Audio();
-      audio.preload = "none";
+<script>
+(function () {
 
-      let activeEl = null;
+const cards = Array.from(document.querySelectorAll(".link-btn"))
+const audio = new Audio()
 
-      function setPlayIcon(btn) {
-        btn.innerHTML = `
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M8 5.5v13l11-6.5L8 5.5z" fill="currentColor"/>
-          </svg>
-        `;
-      }
+let activeEl = null
 
-      function setPauseIcon(btn) {
-        btn.innerHTML = `
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M7 6.5h3v11H7v-11zm7 0h3v11h-3v-11z" fill="currentColor"/>
-          </svg>
-        `;
-      }
+function setPlayIcon(btn){
+btn.innerHTML=`<svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5L8 5.5z" fill="currentColor"/></svg>`
+}
 
-      function resetAllPlayButtons() {
-        document.querySelectorAll(".play").forEach((btn) => setPlayIcon(btn));
-      }
+function setPauseIcon(btn){
+btn.innerHTML=`<svg viewBox="0 0 24 24"><path d="M7 6.5h3v11H7v-11zm7 0h3v11h-3v-11z" fill="currentColor"/></svg>`
+}
 
-      function stopPreview() {
-        audio.pause();
-        audio.currentTime = 0;
-        activeEl = null;
-        resetAllPlayButtons();
-      }
+function resetAll(){
+document.querySelectorAll(".play").forEach(setPlayIcon)
+}
 
-      audio.addEventListener("ended", stopPreview);
+function stop(){
+audio.pause()
+audio.currentTime=0
+activeEl=null
+resetAll()
+}
 
-      audio.addEventListener("error", () => {
-        resetAllPlayButtons();
-        activeEl = null;
-      });
+audio.addEventListener("ended",stop)
 
-      cards.forEach((card) => {
-        const playBtn = card.querySelector(".play");
-        const src = card.getAttribute("data-audio");
+cards.forEach(card=>{
+const playBtn=card.querySelector(".play")
+const src=card.getAttribute("data-audio")
 
-        if (!playBtn) return;
+if(!playBtn)return
 
-        playBtn.addEventListener("click", (e) => {
-          e.preventDefault();
-          e.stopPropagation();
+playBtn.addEventListener("click",e=>{
 
-          if (!src) return;
+e.preventDefault()
+e.stopPropagation()
 
-          const isSame = activeEl === card;
-          const isPlaying = !audio.paused && isSame;
+if(!src)return
 
-          if (isPlaying) {
-            stopPreview();
-            return;
-          }
+const isSame=activeEl===card
+const isPlaying=!audio.paused && isSame
 
-          resetAllPlayButtons();
-          activeEl = card;
-          audio.src = src;
-          audio.currentTime = 0;
+if(isPlaying){
+stop()
+return
+}
 
-          audio.play()
-            .then(() => setPauseIcon(playBtn))
-            .catch(() => {
-              setPlayIcon(playBtn);
-              activeEl = null;
-            });
-        });
+resetAll()
 
-        const cover = card.querySelector(".cover");
-        if (cover && src) {
-          cover.addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            playBtn.click();
-          });
-        }
-      });
+activeEl=card
+audio.src=src
+audio.currentTime=0
 
-      const epRoot = document.getElementById("ep-lvg");
-      if (epRoot) {
-        const toggleBtn = epRoot.querySelector(".dropdown");
+audio.play().then(()=>{
+setPauseIcon(playBtn)
+}).catch(()=>{
+setPlayIcon(playBtn)
+activeEl=null
+})
 
-        if (toggleBtn) {
-          toggleBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
+})
 
-            const isOpen = epRoot.classList.toggle("ep-open");
-            toggleBtn.setAttribute("aria-expanded", String(isOpen));
-          });
-        }
+})
 
-        epRoot.querySelectorAll(".track-row").forEach((row) => {
-          const playBtn = row.querySelector(".play");
-          const src = row.getAttribute("data-audio");
+})()
+</script>
 
-          if (!playBtn) return;
-
-          playBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-
-            if (!src) return;
-
-            const isSame = activeEl === row;
-            const isPlaying = !audio.paused && isSame;
-
-            if (isPlaying) {
-              stopPreview();
-              return;
-            }
-
-            resetAllPlayButtons();
-            activeEl = row;
-            audio.src = src;
-            audio.currentTime = 0;
-
-            audio.play()
-              .then(() => setPauseIcon(playBtn))
-              .catch(() => {
-                setPlayIcon(playBtn);
-                activeEl = null;
-              });
-          });
-
-          const cover = row.querySelector(".cover");
-          if (cover) {
-            cover.addEventListener("click", (e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              playBtn.click();
-            });
-          }
-        });
-      }
-
-      document.addEventListener("click", (e) => {
-        const clickedPlay = e.target.closest(".play");
-        if (!clickedPlay && activeEl) stopPreview();
-      });
-    })();
-  </script>
 </body>
 </html>
